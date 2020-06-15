@@ -4,7 +4,7 @@ from collections import namedtuple
 from fhir import FHIRClient
 
 #
-# Valid code mappings using the FHIR terminology server
+# Validate a list of code mappings using the FHIR terminology server
 # Input is a CSV file with source code, target code
 # Output is a CSV file with source code, target code, source display, target display, mapping valid
 #
