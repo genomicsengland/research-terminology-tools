@@ -7,7 +7,6 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 #
 # Convenience wrapper for accessing a FHIR Parameters resource (https://www.hl7.org/fhir/parameters.html)
 #
-#
 class Parameters:
 
     def __init__(self, parameters: List[dict]):
@@ -34,6 +33,7 @@ class Parameters:
     def get_codings(self, name) -> Iterator[dict]:
         return self.__get_values_for_name(name, 'valueCoding')
 
+    # the value of a "multi-part" parameter is a new Parameters instance
     def get_part(self, name) -> 'Parameters':
         return next(self.get_parts(name))
 
@@ -42,7 +42,9 @@ class Parameters:
 
 
 #
-# Simple FHIR API client
+# FHIR API client implementation of:
+# CodeSystem/$validate-code
+# ConceptMap/$translate
 #
 class FHIRClient:
 
